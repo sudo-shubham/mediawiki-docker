@@ -39,7 +39,7 @@ RUN cd /var/www/ && \
     mv /var/www/mediawiki-${MEDIAWIKI_VERSION}/ /var/www/mediawiki/ && \
     && apt-get autoremove -y \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /var/lib/apt/lists/*
 
 # SET FOLDER OWNERSHIP FOR APACHE
 RUN chown -R www-data:www-data /var/www/mediawiki
