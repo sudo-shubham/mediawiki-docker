@@ -18,7 +18,8 @@ RUN echo 'APT::Install-Recommends "0";' >> /etc/apt/apt.conf && \
         libpng-dev \
         zlib1g-dev \
         libwebp-dev \
-        libxpm-dev
+        libxpm-dev \
+        netcat
 
 # INSTALL AND ENABLE PHP EXTENSIONS REQUIRED FOR MEDIAWIKI
 RUN docker-php-ext-configure gd --with-gd --with-webp-dir --with-jpeg-dir \
@@ -51,6 +52,15 @@ RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf
 
 # Export 80
 EXPOSE 80
+
+# Copy LocalSettings
+# COPY ./LocalSettings.php /var/www/mediawiki
+
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+
+WORKDIR /var/www/mediawiki
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Start Apache
 CMD ["apache2-foreground"]
