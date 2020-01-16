@@ -60,6 +60,9 @@ COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 
 WORKDIR /var/www/mediawiki
 
+RUN chmod 777 /docker-entrypoint.sh
+RUN chmod +x /docker-entrypoint.sh
+
 ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Start Apache
