@@ -14,9 +14,9 @@ php maintenance/install.php \
                 --confpath /var/www/mediawiki \
                 --dbname "$MYSQL_DATABASE" \
                 --dbserver "$MEDIAWIKI_DB_HOST" \
-                --dbuser "root" \
+                --dbuser $MYSQL_USER \
                 --dbpass "$MYSQL_ROOT_PASSWORD" \
-                --installdbuser "root" \
+                --installdbuser "$MYSQL_USER" \
                 --installdbpass "$MYSQL_ROOT_PASSWORD" \
                 --server "$MEDIAWIKI_SITE_SERVER" \
                 --pass "$MEDIAWIKI_ADMIN_PASS" \
